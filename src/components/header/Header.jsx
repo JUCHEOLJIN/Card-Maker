@@ -2,12 +2,12 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Header = ({ onLogout }) => {
+const Header = ({ onLogout, fontSize = "18px" }) => {
   return (
     <StyledHeader>
       {onLogout && <LogoutBtn onClick={onLogout}>Logout</LogoutBtn>}
       <Logo src="/images/logo.png" />
-      <Title>Business Card Maker</Title>
+      <Title fontSize={fontSize}>Business Card Maker</Title>
     </StyledHeader>
   );
 };
@@ -41,5 +41,5 @@ const Logo = styled.img`
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.makerWhite};
-  font-size: 18px;
+  font-size: ${({ fontSize }) => fontSize};
 `;

@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ fontSize = "18px" }) => {
   return (
     <StyeldFooter>
-      <Title>Code your dream</Title>
+      <Title fontSize={fontSize}>Code your dream</Title>
     </StyeldFooter>
   );
 };
@@ -20,4 +20,5 @@ const StyeldFooter = styled.footer`
 
 const Title = styled.p`
   color: ${({ theme }) => theme.colors.makerWhite};
+  font-size: ${({ fontSize }) => fontSize};
 `;
