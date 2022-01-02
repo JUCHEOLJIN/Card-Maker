@@ -1,15 +1,28 @@
 /** @jsxImportResource @emotion/react */
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ authService }) => {
+  const navigate = useNavigate();
+
+  const goToMaker = (userId) => {
+    navigate("/maker", { state: { id: userId } });
+  };
+
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.textContent)
-      .then(console.log);
+      .then((data) => goToMaker(data.user.uid));
   };
+
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      user && goToMaker(user.id);
+    });
+  });
 
   return (
     <Container>
