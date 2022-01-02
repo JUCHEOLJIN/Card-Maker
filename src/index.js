@@ -5,12 +5,15 @@ import App from "./App";
 import reset from "./styles/reset";
 import theme from "./styles/theme";
 import reportWebVitals from "./reportWebVitals";
+import AuthService from "./service/auth_service";
+import { firebaseApp } from "./service/firebase";
 
+const authService = new AuthService(firebaseApp);
 ReactDOM.render(
   <React.StrictMode>
     <Global styles={reset} />
     <ThemeProvider theme={theme}>
-      <App />
+      <App authService={authService} />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
