@@ -1,4 +1,3 @@
-/** @jsxImportResource @emotion/react */
 import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import Header from "../header/Header";
