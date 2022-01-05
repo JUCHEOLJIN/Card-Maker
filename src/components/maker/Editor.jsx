@@ -1,14 +1,16 @@
 import styled from "@emotion/styled";
 import React from "react";
-import CardEditFrom from "./CardEditFrom";
+import CardAddForm from "./CardAddForm";
+import CardEditForm from "./CardEditForm";
 
-const Editor = ({ cards }) => {
+const Editor = ({ cards, addCard }) => {
   return (
     <StyledSection>
       <Title>Editor</Title>
       {cards.map((card) => (
-        <CardEditFrom card={card} key={card.id} />
+        <CardEditForm card={card} key={card.id} />
       ))}
+      <CardAddForm onAdd={addCard} />
     </StyledSection>
   );
 };

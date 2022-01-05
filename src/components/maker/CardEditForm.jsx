@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "../common/button/Button";
 import ImageFileInput from "../common/image_file_Input/ImageFileInput";
-const CardEditFrom = ({
+const CardEditForm = ({
   card: { name, company, title, email, message, theme, fileName, fileURL },
 }) => {
   const onSubmit = (event) => {
@@ -34,7 +34,7 @@ const CardEditFrom = ({
   );
 };
 
-export default CardEditFrom;
+export default CardEditForm;
 
 const EditForm = styled.form`
   display: flex;
