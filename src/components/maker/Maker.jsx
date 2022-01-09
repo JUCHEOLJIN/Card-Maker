@@ -7,8 +7,8 @@ import Editor from "./Editor";
 import Preview from "./Preview";
 
 const Maker = ({ authService }) => {
-  const [cards, setCards] = useState([
-    {
+  const [cards, setCards] = useState({
+    1: {
       id: "1",
       name: "eden",
       company: "Shopl",
@@ -19,7 +19,7 @@ const Maker = ({ authService }) => {
       fileName: "file",
       fileURL: null,
     },
-    {
+    2: {
       id: "2",
       name: "bae",
       company: "kakao",
@@ -30,7 +30,7 @@ const Maker = ({ authService }) => {
       fileName: "file",
       fileURL: null,
     },
-    {
+    3: {
       id: "3",
       name: "jay",
       company: "toss",
@@ -41,7 +41,7 @@ const Maker = ({ authService }) => {
       fileName: "file",
       fileURL: null,
     },
-  ]);
+  });
 
   const navigate = useNavigate();
   const onLogout = () => {
@@ -56,27 +56,20 @@ const Maker = ({ authService }) => {
     });
   });
 
-  const addCard = (card) => {
-    const updated = [...cards, card];
-    setCards(updated);
-  };
-
-  const deleteCard = (cardId) => {
-    const deleted = [...cards].filter((card) => card.id !== cardId);
-    setCards(deleted);
-  };
-
-  const handleChange = (target, cardId) => {
-    const { name, value } = target;
-    const newCards = [...cards].map((card) => {
-      if (card.id !== cardId) {
-        return card;
-      } else {
-        return { ...card, [name]: value };
-      }
+  const CreateOrUpdateCard = (card) => {
+    setCards((cards) => {
+      const updated = { ...cards };
+      updated[card.id] = card;
+      return updated;
     });
-    console.log(newCards);
-    setCards(newCards);
+  };
+
+  const deleteCard = (card) => {
+    setCards((cards) => {
+      const updated = { ...cards };
+      delete updated[card.id];
+      return updated;
+    });
   };
 
   return (
@@ -85,9 +78,8 @@ const Maker = ({ authService }) => {
       <Contents>
         <Editor
           cards={cards}
-          addCard={addCard}
+          CreateOrUpdateCard={CreateOrUpdateCard}
           deleteCard={deleteCard}
-          handleChange={handleChange}
         />
         <Preview cards={cards} />
       </Contents>

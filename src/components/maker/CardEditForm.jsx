@@ -4,21 +4,26 @@ import styled from "@emotion/styled";
 import Button from "../common/button/Button";
 import ImageFileInput from "../common/image_file_Input/ImageFileInput";
 const CardEditForm = ({
+  card,
   card: { id, name, company, title, email, message, theme, fileName, fileURL },
   deleteCard,
-  handleChange,
+  CreateOrUpdateCard,
 }) => {
   const onSubmit = (event) => {
     event.preventDefault();
-    deleteCard(id);
+    deleteCard(card);
   };
 
   const onChange = (event) => {
     if (event.currentTarget == null) {
       return;
     }
-    handleChange(event.target, id);
+    CreateOrUpdateCard({
+      ...card,
+      [event.target.name]: event.target.value,
+    });
   };
+
   return (
     <EditForm>
       <Input
