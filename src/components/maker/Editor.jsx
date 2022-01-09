@@ -3,12 +3,17 @@ import React from "react";
 import CardAddForm from "./CardAddForm";
 import CardEditForm from "./CardEditForm";
 
-const Editor = ({ cards, addCard }) => {
+const Editor = ({ cards, addCard, deleteCard, handleChange }) => {
   return (
     <StyledSection>
       <Title>Editor</Title>
       {cards.map((card) => (
-        <CardEditForm card={card} key={card.id} />
+        <CardEditForm
+          card={card}
+          key={card.id}
+          deleteCard={deleteCard}
+          handleChange={handleChange}
+        />
       ))}
       <CardAddForm onAdd={addCard} />
     </StyledSection>

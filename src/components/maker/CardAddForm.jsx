@@ -12,7 +12,7 @@ const CardAddForm = ({ onAdd }) => {
   const emailRef = useRef();
   const messageRef = useRef();
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     const card = {
       id: Date.now(), //uuid
@@ -71,7 +71,7 @@ const CardAddForm = ({ onAdd }) => {
       >
         <ImageFileInput />
       </div>
-      <Button name="Add" onClick={handleSubmit} />
+      <Button name="Add" onClick={onSubmit} />
     </EditForm>
   );
 };

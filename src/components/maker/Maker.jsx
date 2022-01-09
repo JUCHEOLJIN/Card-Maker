@@ -61,11 +61,34 @@ const Maker = ({ authService }) => {
     setCards(updated);
   };
 
+  const deleteCard = (cardId) => {
+    const deleted = [...cards].filter((card) => card.id !== cardId);
+    setCards(deleted);
+  };
+
+  const handleChange = (target, cardId) => {
+    const { name, value } = target;
+    const newCards = [...cards].map((card) => {
+      if (card.id !== cardId) {
+        return card;
+      } else {
+        return { ...card, [name]: value };
+      }
+    });
+    console.log(newCards);
+    setCards(newCards);
+  };
+
   return (
     <StyledSection>
       <Header onLogout={onLogout} fontSize="24px" />
       <Contents>
-        <Editor cards={cards} addCard={addCard} />
+        <Editor
+          cards={cards}
+          addCard={addCard}
+          deleteCard={deleteCard}
+          handleChange={handleChange}
+        />
         <Preview cards={cards} />
       </Contents>
       <Footer fontSize="24px" />

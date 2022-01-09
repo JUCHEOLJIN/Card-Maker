@@ -4,24 +4,57 @@ import styled from "@emotion/styled";
 import Button from "../common/button/Button";
 import ImageFileInput from "../common/image_file_Input/ImageFileInput";
 const CardEditForm = ({
-  card: { name, company, title, email, message, theme, fileName, fileURL },
+  card: { id, name, company, title, email, message, theme, fileName, fileURL },
+  deleteCard,
+  handleChange,
 }) => {
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("submit");
+    deleteCard(id);
+  };
+
+  const onChange = (event) => {
+    if (event.currentTarget == null) {
+      return;
+    }
+    handleChange(event.target, id);
   };
   return (
     <EditForm>
-      <Input type="text" name="name" value={name} css={flexStyle} />
-      <Input type="text" name="company" value={company} css={flexStyle} />
-      <Select name="theme" value={theme} css={flexStyle}>
-        <Option>Light</Option>
-        <Option>Dark</Option>
-        <Option>Colorful</Option>
+      <Input
+        type="text"
+        name="name"
+        value={name}
+        css={flexStyle}
+        onChange={onChange}
+      />
+      <Input
+        type="text"
+        name="company"
+        value={company}
+        css={flexStyle}
+        onChange={onChange}
+      />
+      <Select name="theme" value={theme} css={flexStyle} onChange={onChange}>
+        <Option>light</Option>
+        <Option>dark</Option>
+        <Option>colorful</Option>
       </Select>
-      <Input type="text" name="title" value={title} css={flexStyle} />
-      <Input type="text" name="email" value={email} css={flexStyle} />
-      <Textarea name="message" value={message} />
+      <Input
+        type="text"
+        name="title"
+        value={title}
+        css={flexStyle}
+        onChange={onChange}
+      />
+      <Input
+        type="text"
+        name="email"
+        value={email}
+        css={flexStyle}
+        onChange={onChange}
+      />
+      <Textarea name="message" value={message} onChange={onChange} />
       <div
         css={css`
           flex: 1 1 50%;
