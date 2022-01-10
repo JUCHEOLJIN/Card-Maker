@@ -7,13 +7,20 @@ import theme from "./styles/theme";
 import reportWebVitals from "./reportWebVitals";
 import AuthService from "./service/auth_service";
 import { firebaseApp } from "./service/firebase";
+import ImageUploader from "./service/image_uploader";
+import ImageFileInput from "./components/common/image_file_Input/ImageFileInput";
 
 const authService = new AuthService(firebaseApp);
+const imageUploader = new ImageUploader();
+const FileInput = (props) => (
+  <ImageFileInput {...props} imageUploader={imageUploader} />
+);
+
 ReactDOM.render(
   <React.StrictMode>
     <Global styles={reset} />
     <ThemeProvider theme={theme}>
-      <App authService={authService} />
+      <App authService={authService} FileInput={FileInput} />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

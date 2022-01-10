@@ -3,13 +3,16 @@ import styled from "@emotion/styled";
 import Login from "./components/login/Login";
 import Maker from "./components/maker/Maker";
 
-function App({ authService }) {
+function App({ authService, FileInput }) {
   return (
     <Container>
       <Router>
         <Routes>
           <Route path="/" element={<Login authService={authService} />} />
-          <Route path="/maker" element={<Maker authService={authService} />} />
+          <Route
+            path="/maker"
+            element={<Maker authService={authService} FileInput={FileInput} />}
+          />
         </Routes>
       </Router>
     </Container>

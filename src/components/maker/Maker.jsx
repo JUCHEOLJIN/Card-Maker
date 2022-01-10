@@ -6,7 +6,7 @@ import Header from "../header/Header";
 import Editor from "./Editor";
 import Preview from "./Preview";
 
-const Maker = ({ authService }) => {
+const Maker = ({ authService, FileInput }) => {
   const [cards, setCards] = useState({
     1: {
       id: "1",
@@ -80,6 +80,7 @@ const Maker = ({ authService }) => {
           cards={cards}
           CreateOrUpdateCard={CreateOrUpdateCard}
           deleteCard={deleteCard}
+          FileInput={FileInput}
         />
         <Preview cards={cards} />
       </Contents>

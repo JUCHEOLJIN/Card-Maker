@@ -3,7 +3,7 @@ import React from "react";
 import CardAddForm from "./CardAddForm";
 import CardEditForm from "./CardEditForm";
 
-const Editor = ({ cards, CreateOrUpdateCard, deleteCard }) => {
+const Editor = ({ cards, CreateOrUpdateCard, deleteCard, FileInput }) => {
   return (
     <StyledSection>
       <Title>Editor</Title>
@@ -13,9 +13,13 @@ const Editor = ({ cards, CreateOrUpdateCard, deleteCard }) => {
           key={key}
           deleteCard={deleteCard}
           CreateOrUpdateCard={CreateOrUpdateCard}
+          FileInput={FileInput}
         />
       ))}
-      <CardAddForm CreateOrUpdateCard={CreateOrUpdateCard} />
+      <CardAddForm
+        CreateOrUpdateCard={CreateOrUpdateCard}
+        FileInput={FileInput}
+      />
     </StyledSection>
   );
 };

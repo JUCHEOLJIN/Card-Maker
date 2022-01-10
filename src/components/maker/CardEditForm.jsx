@@ -2,12 +2,13 @@ import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "../common/button/Button";
-import ImageFileInput from "../common/image_file_Input/ImageFileInput";
+
 const CardEditForm = ({
   card,
   card: { id, name, company, title, email, message, theme, fileName, fileURL },
   deleteCard,
   CreateOrUpdateCard,
+  FileInput,
 }) => {
   const onSubmit = (event) => {
     event.preventDefault();
@@ -22,6 +23,10 @@ const CardEditForm = ({
       ...card,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const onFileChange = (file) => {
+    CreateOrUpdateCard({ ...card, fileName: file.name, fileURL: file.url });
   };
 
   return (
@@ -65,7 +70,7 @@ const CardEditForm = ({
           flex: 1 1 50%;
         `}
       >
-        <ImageFileInput />
+        <FileInput onFileChange={onFileChange} name={fileName} />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </EditForm>
