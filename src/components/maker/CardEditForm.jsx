@@ -5,7 +5,7 @@ import Button from "../common/button/Button";
 
 const CardEditForm = ({
   card,
-  card: { id, name, company, title, email, message, theme, fileName, fileURL },
+  card: { id, name, company, title, email, message, theme, fileName },
   deleteCard,
   CreateOrUpdateCard,
   FileInput,
