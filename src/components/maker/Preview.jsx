@@ -20,6 +20,7 @@ export default Preview;
 const StyledSection = styled.section`
   flex-basis: 50%;
   padding: 1em 3em;
+  overflow-y: auto;
 `;
 
 const Title = styled.h1`

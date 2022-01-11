@@ -30,6 +30,7 @@ const StyledSection = styled.section`
   flex-basis: 50%;
   padding: 1em 3em;
   border-right: 1px solid ${({ theme }) => theme.colors.makerLightGrey};
+  overflow-y: auto;
 `;
 
 const Title = styled.h1`

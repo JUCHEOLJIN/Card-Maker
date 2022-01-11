@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Login from "./components/login/Login";
 import Maker from "./components/maker/Maker";
 
-function App({ authService, FileInput }) {
+function App({ authService, FileInput, cardRepository }) {
   return (
     <Container>
       <Router>
@@ -11,7 +11,13 @@ function App({ authService, FileInput }) {
           <Route path="/" element={<Login authService={authService} />} />
           <Route
             path="/maker"
-            element={<Maker authService={authService} FileInput={FileInput} />}
+            element={
+              <Maker
+                authService={authService}
+                FileInput={FileInput}
+                cardRepository={cardRepository}
+              />
+            }
           />
         </Routes>
       </Router>

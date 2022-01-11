@@ -43,7 +43,7 @@ const ImageFileInput = ({ className, imageUploader, name, onFileChange }) => {
         type="button"
         name={name}
       >
-        {name ?? "No file"}
+        {name || "No file"}
       </StyledButton>
     </Wrapper>
   );
@@ -85,6 +85,7 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   width: 100%;
+  height: 100%;
   padding: 0.5em;
   border: 0;
   background: ${({ theme, name }) =>
