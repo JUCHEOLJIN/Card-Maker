@@ -1,27 +1,27 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import EmotionTheme from "../../styles/theme";
 
 const DEFAULT_IMAGE = "/images/default_logo.png";
 
-const Card = ({
-  card: { name, company, title, email, message, theme, fileName, fileURL },
-}) => {
-  const url = fileURL ?? DEFAULT_IMAGE;
-  return (
-    <CardItem css={cardTheme[theme]}>
-      <Avatar src={url} alt="profile photo" />
-      <InfoWrapper>
-        <Name>{name}</Name>
-        <Company>{company}</Company>
-        <Title>{title}</Title>
-        <Email>{email}</Email>
-        <Message>{message}</Message>
-      </InfoWrapper>
-    </CardItem>
-  );
-};
+const Card = memo(
+  ({ card: { name, company, title, email, message, theme, fileURL } }) => {
+    const url = fileURL ?? DEFAULT_IMAGE;
+    return (
+      <CardItem css={cardTheme[theme]}>
+        <Avatar src={url} alt="profile photo" />
+        <InfoWrapper>
+          <Name>{name}</Name>
+          <Company>{company}</Company>
+          <Title>{title}</Title>
+          <Email>{email}</Email>
+          <Message>{message}</Message>
+        </InfoWrapper>
+      </CardItem>
+    );
+  }
+);
 
 export default Card;
 

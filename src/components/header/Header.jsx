@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "@emotion/styled";
 
-const Header = ({ onLogout, fontSize = "18px" }) => {
+const Header = memo(({ onLogout, fontSize = "18px" }) => {
   return (
     <StyledHeader>
       {onLogout && <LogoutBtn onClick={onLogout}>Logout</LogoutBtn>}
@@ -9,8 +9,7 @@ const Header = ({ onLogout, fontSize = "18px" }) => {
       <Title fontSize={fontSize}>Business Card Maker</Title>
     </StyledHeader>
   );
-};
-
+});
 export default Header;
 
 const StyledHeader = styled.header`

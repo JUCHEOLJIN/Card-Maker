@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, memo } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "../common/button/Button";
 
-const CardAddForm = ({ CreateOrUpdateCard, FileInput }) => {
+const CardAddForm = memo(({ CreateOrUpdateCard, FileInput }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -83,7 +83,7 @@ const CardAddForm = ({ CreateOrUpdateCard, FileInput }) => {
       <Button name="Add" onClick={onSubmit} />
     </EditForm>
   );
-};
+});
 
 export default CardAddForm;
 
